@@ -40,7 +40,7 @@ class ApiCalls:
         This function retrieves the relevant information from a PDF document and adds it to
         the prompt of the model to simmulate a RAG method.
         """
-        context = self.pdf.search_query(question)
+        context, _, _ = self.pdf.search_query(question)
         output = self.client.chat.completions.create(
             model=self.mistral,
             messages=[
