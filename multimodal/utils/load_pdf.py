@@ -17,11 +17,14 @@ class PDFSearch:
         """
         This function loads the pdf file and extracts the text from it.
         """
-        with open(self.file_path, "rb") as file:
-            pdf = PyPDF2.PdfFileReader(file)
-            text = ""
-            for page_num in range(pdf.getNumPages()):
-                text += pdf.getPage(page_num).extract_text()
+        try:
+            with open(self.file_path, "rb") as file:
+                pdf = PyPDF2.PdfFileReader(file)
+                text = ""
+                for page_num in range(pdf.getNumPages()):
+                    text += pdf.getPage(page_num).extract_text()
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"Could not open PDF file at {self.file_path}: {e}")
         return text
     
     def chunk_text(self, chunk_size=1500) -> List[str]: #chose to have 1,5k char chunck sizes
@@ -45,6 +48,8 @@ class PDFSearch:
         """
         Simple function to create a faiss index for the embeddings.
         """
+        if not hasattr(self.embeddings, "shape"):
+            raise ValueError("Embeddings do not have a shape attribute.")
         index = faiss.IndexFlatL2(self.embeddings.shape[1])
         index.add(self.embeddings)
         return index
