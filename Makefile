@@ -27,44 +27,6 @@ clean:
 	find . -type d -name "__pycache__" -delete
 
 
-## Lint using ruff (use `make format` to do formatting)
-.PHONY: lint
-lint:
-	ruff format --check
-	ruff check
-
-## Format source code with ruff
-.PHONY: format
-format:
-	ruff check --fix
-	ruff format
-
-
-
-
-
-## Set up Python interpreter environment
-.PHONY: create_environment
-create_environment:
-	
-	conda create --name $(PROJECT_NAME) python=$(PYTHON_VERSION) -y
-	
-	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
-	
-
-
-
-#################################################################################
-# PROJECT RULES                                                                 #
-#################################################################################
-
-
-## Make dataset
-.PHONY: data
-data: requirements
-	$(PYTHON_INTERPRETER) llm_lvm_app/dataset.py
-
-
 #################################################################################
 # Self Documenting Commands                                                     #
 #################################################################################

@@ -27,7 +27,7 @@ School project
 │                         `1.0-jqp-initial-data-exploration`.
 │
 ├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         llm_lvm_app and configuration for tools like black
+│                         llm_vlm_app and configuration for tools like black
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
 │
@@ -39,9 +39,9 @@ School project
 │
 ├── setup.cfg          <- Configuration file for flake8
 │
-└── llm_lvm_app   <- Source code for use in this project.
+└── llm_vlm_app   <- Source code for use in this project.
     │
-    ├── __init__.py             <- Makes llm_lvm_app a Python module
+    ├── __init__.py             <- Makes llm_vlm_app a Python module
     │
     ├── config.py               <- Store useful variables and configuration
     │
