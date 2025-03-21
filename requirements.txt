@@ -1,8 +1,12 @@
-loguru
-mkdocs
 pip
 python-dotenv
 ruff
 tqdm
 typer
+transformers 
+sentence-transformers 
+faiss-cpu 
+PyPDF2 
+pillow 
+torch
 -e .

@@ -20,13 +20,13 @@ requires-python = "~=3.10"
 
 [tool.ruff]
 line-length = 99
-src = ["llm_vlm_app"]
-include = ["pyproject.toml", "llm_vlm_app/**/*.py"]
+src = ["src"]
+include = ["pyproject.toml", "src/**/*.py"]
 
 [tool.ruff.lint]
 extend-select = ["I"]  # Add import sorting
 
 [tool.ruff.lint.isort]
-known-first-party = ["llm_vlm_app"]
+known-first-party = ["src"]
 force-sort-within-sections = true
 
