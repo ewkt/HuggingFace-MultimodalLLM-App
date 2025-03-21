@@ -1,7 +1,8 @@
 import PyPDF2
 import faiss
+import numpy as np
 from sentence_transformers import SentenceTransformer
-
+from typing import List, Tuple
 
 class PDFSearch:
     def __init__(self):
@@ -12,7 +13,10 @@ class PDFSearch:
         self.embeddings = self.calc_embeddings()
         self.index = self.faiss_index()
 
-    def load_pdf(self):
+    def load_pdf(self) -> str:
+        """
+        This function loads the pdf file and extracts the text from it.
+        """
         with open(self.file_path, "rb") as file:
             pdf = PyPDF2.PdfFileReader(file)
             text = ""
@@ -20,23 +24,35 @@ class PDFSearch:
                 text += pdf.getPage(page_num).extract_text()
         return text
     
-    def chunk_text(self, chunk_size=1500): #chose to have 1,5k char chunck size
+    def chunk_text(self, chunk_size=1500) -> List[str]: #chose to have 1,5k char chunck sizes
+        """
+        Simple function to split the text into chunks of 1500 characters.
+        """
         chunks = []
         for i in range(0, len(self.text), chunk_size):
             chunks.append(self.text[i:i + chunk_size])
         return chunks
 
-    def calc_embeddings(self):
+    def calc_embeddings(self) -> np.ndarray:
+        """
+        Simple function to calculate the embeddings for the chunks of text.
+        """
         model = SentenceTransformer(self.model_name)
         embeddings = model.encode(self.chunks)
         return embeddings
 
-    def faiss_index(self):
+    def faiss_index(self) -> faiss.IndexFlatL2:
+        """
+        Simple function to create a faiss index for the embeddings.
+        """
         index = faiss.IndexFlatL2(self.embeddings.shape[1])
         index.add(self.embeddings)
         return index
 
-    def search_query(self, query):
+    def search_query(self, query: str) -> Tuple[List[np.ndarray], np.ndarray, np.ndarray]:
+        """
+        Method that embeds a query and searches for the closest text extracts in the index.
+        """
         model = SentenceTransformer(self.model_name)
         query_embedding = model.encode([query])
         distance, indices = self.index.search(query_embedding, k=2) #chose to keep the top 2 closest text extracts
