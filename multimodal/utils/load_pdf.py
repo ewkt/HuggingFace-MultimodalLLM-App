@@ -7,11 +7,12 @@ from typing import List, Tuple
 class PDFSearch:
     def __init__(self):
         self.file_path = "multimodal/data/article_2502.15214v1.pdf"
-        self.model_name = "sentence-transformers/all-MiniLM-L6-v2"
+        self.model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
         self.text = self.load_pdf()
         self.chunks = self.chunk_text()
         self.embeddings = self.calc_embeddings()
         self.index = self.faiss_index()
+        
 
     def load_pdf(self) -> str:
         """
@@ -21,7 +22,7 @@ class PDFSearch:
             with open(self.file_path, "rb") as file:
                 pdf = PyPDF2.PdfFileReader(file)
                 text = ""
-                for page_num in range(pdf.getNumPages()):
+                for page_num in range(pdf.getNumPages()): #reads the pages one by one
                     text += pdf.getPage(page_num).extract_text()
         except FileNotFoundError as e:
             raise FileNotFoundError(f"Could not open PDF file at {self.file_path}: {e}")
@@ -40,8 +41,7 @@ class PDFSearch:
         """
         Simple function to calculate the embeddings for the chunks of text.
         """
-        model = SentenceTransformer(self.model_name)
-        embeddings = model.encode(self.chunks)
+        embeddings = self.model.encode(self.chunks)
         return embeddings
 
     def faiss_index(self) -> faiss.IndexFlatL2:
@@ -58,12 +58,12 @@ class PDFSearch:
         """
         Method that embeds a query and searches for the closest text extracts in the index.
         """
-        model = SentenceTransformer(self.model_name)
-        query_embedding = model.encode([query])
+        query_embedding = self.model.encode([query]) #encode the query to be able to compare it with the text extracts
         distance, indices = self.index.search(query_embedding, k=2) #chose to keep the top 2 closest text extracts
         return [self.embeddings[i] for i in indices[0]] , indices[0], distance[0]
 
 if __name__ == '__main__':
+    #example usage of the PDFSearch class
     module = PDFSearch()
     query = "What is the difference between LLM and VLM?"
     _ , indices, distance = module.search_query(query)

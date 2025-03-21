@@ -4,26 +4,22 @@ from transformers import BlipProcessor, BlipForConditionalGeneration
 class LocalInference:
     def __init__(self):
         self.blip = "Salesforce/blip-image-captioning-base"
+        self.processor = BlipProcessor.from_pretrained(self.blip)
+        self.model = BlipForConditionalGeneration.from_pretrained(self.blip)
 
-    def load_blip(self):
-        processor = BlipProcessor.from_pretrained(self.blip)
-        model = BlipForConditionalGeneration.from_pretrained(self.blip)
-        return processor, model
-
-    def infer(self, raw_image, processor, model, text=None):
-        inputs = processor(raw_image, text, return_tensors="pt")
-        out = model.generate(**inputs)
-        print(processor.decode(out[0], skip_special_tokens=True))
+    def infer(self, raw_image, text=None):
+        inputs = self.processor(raw_image, text, return_tensors="pt")
+        out = self.model.generate(**inputs)
+        print(self.processor.decode(out[0], skip_special_tokens=True))
 
     def main(self):
-        processor, model = self.load_blip()
         raw_image = Image.open("multimodal/data/demo.jpg").convert('RGB')
 
-        # conditional image captioning
-        self.infer(raw_image,processor, model)
+        #unconditional image captioning
+        self.infer(raw_image)
 
-        # unconditional image captioning
-        self.infer(raw_image,processor, model, text="a photography of")
+        #conditional image captioning: add a text prompt that the LLM has to include in the answer
+        self.infer(raw_image, text="a photography of")
 
 if __name__ == '__main__':
     module = LocalInference()
