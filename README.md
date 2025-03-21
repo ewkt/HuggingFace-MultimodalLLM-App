@@ -1,8 +1,4 @@
-# llm-vlm_app
-
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+# LLM HuggingFace API
 
 ## Introduction
 
@@ -22,8 +18,8 @@ Then all that was needed was to build the *InferenceClient()* with the user toke
 ## Get Started
 
 1. create a venv to install requirments into
-> python -m venv venv
-> venv\Scripts\activate
+> python -m venv venv \
+> venv\Scripts\activate \
 > pip install -e .
 
 2. set huggigng face token in .env
@@ -31,7 +27,7 @@ Then all that was needed was to build the *InferenceClient()* with the user toke
 
 3. you can run the scripts to look at th generated results:
 
-> python -m multimodal.src.api_call
+> python -m multimodal.src.api_call \
 > python -m multimodal.src.local_blip
 --------
 
