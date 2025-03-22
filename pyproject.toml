@@ -1,7 +1,6 @@
 [project]
 name = "multimodal_HF_llm_api_streamlit_app"
 version = "0.0.1"
-packages = [{ include = "multimodal" }]
 
 description = "School project!"
 
@@ -36,3 +35,11 @@ test = [
     "pytest-cov>=6.0.0",
     "pytest-asyncio>=0.23.5",
 ]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["multimodal*"]
