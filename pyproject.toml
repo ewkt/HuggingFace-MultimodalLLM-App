@@ -1,8 +1,8 @@
 [project]
-name = "multimodal"
+name = "multimodal HF llm api streamlit app"
 version = "0.0.1"
 
-description = "School project"
+description = "School project!"
 
 authors = [
   { name = "ewkt" },
@@ -25,7 +25,6 @@ dependencies = [
     "torch==2.5.1",
     "streamlit==1.43.2",
 ]
-
 
 classifiers = [
     "Programming Language :: Python :: 3",
