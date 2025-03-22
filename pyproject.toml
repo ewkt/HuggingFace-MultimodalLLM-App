@@ -1,6 +1,7 @@
 [project]
 name = "multimodal_HF_llm_api_streamlit_app"
 version = "0.0.1"
+packages = [{ include = "multimodal" }]
 
 description = "School project!"
 
