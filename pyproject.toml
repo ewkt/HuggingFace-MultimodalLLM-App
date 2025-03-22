@@ -36,3 +36,7 @@ test = [
     "pytest-cov>=6.0.0",
     "pytest-asyncio>=0.23.5",
 ]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
