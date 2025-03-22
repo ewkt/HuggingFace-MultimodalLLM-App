@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This school project was conducted to learn about Huggingface's API.
+This school project was conducted to learn about Huggingface's API and use Streamlit to deploy the python app [Available here](https://multimodal00llm.streamlit.app/)
 
 It was also an opportunity to try a RAG approach. [This](https://arxiv.org/pdf/2502.15214) scientific paper was used as a source of precise knowledge, the LLM was then queried with added context obtained from the most simmilar embedding found in the collection of chuncks from the article.
 
 Using Hugging Face's InferenceAPI was straightforward. First a user token was generated, then a model was chosen by [browsing the available ones.](https://huggingface.co/models?inference_provider=hf-inference&pipeline_tag=text-generation&sort=trending)
-Then all that was needed was to build the *InferenceClient()* with the user token, then start querying!
+Then all that was needed was to build the *InferenceClient()* with the user token, and start querying!
 
 ## What does this code do?
 
