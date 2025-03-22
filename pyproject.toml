@@ -1,8 +1,8 @@
 [project]
-name = "multimodal_HF_llm_api_streamlit_app"
+name = "multimodal"
 version = "0.0.1"
 
-description = "School project!"
+description = "School project, building a streamlit app to interract with various HF llms"
 
 authors = [
   { name = "ewkt" },
@@ -23,6 +23,7 @@ dependencies = [
     "PyPDF2==2.10.3",
     "pillow==11.1.0",
     "streamlit==1.43.2",
+    "torch==2.6.0",
 ]
 
 classifiers = [
@@ -35,11 +36,3 @@ test = [
     "pytest-cov>=6.0.0",
     "pytest-asyncio>=0.23.5",
 ]
-
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["multimodal*"]
