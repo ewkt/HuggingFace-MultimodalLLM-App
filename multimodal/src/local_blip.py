@@ -13,6 +13,7 @@ class LocalInference:
         print(self.processor.decode(out[0], skip_special_tokens=True))
 
     def main(self):
+        #load the image with Pillow
         raw_image = Image.open("multimodal/data/demo.jpg").convert('RGB')
 
         #unconditional image captioning

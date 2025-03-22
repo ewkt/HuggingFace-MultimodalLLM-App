@@ -34,6 +34,15 @@ class ApiCalls:
         output = self.client.image_to_text(img_data, model=self.blip)
 
         return output.generated_text
+    
+    def advanced_img2text(self, img_path: str) -> str:
+        """
+        This function uses the image_to_text() function from the HF api to generate a text from an image,
+        then creates a summary and key points from the generated text.
+        """
+        out = self.img2text(img_path)
+        response = self.summarize_and_key_points(out)
+        return response
 
     def RAG_query(self, question: str) -> str:
         """
@@ -93,8 +102,7 @@ class ApiCalls:
 
         #3. Image to text from URL with a summarization and key points
         img_url = "https://storage.googleapis.com/sfr-vision-language-research/BLIP/demo.jpg"
-        response = self.img2text(img_url)
-        print(self.summarize_and_key_points(response))
+        print(self.advanced_img2text(img_url))
 
         #4. RAG query
         precise_question = "What is long-horizon planning, and reward design?"

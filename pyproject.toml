@@ -23,6 +23,7 @@ dependencies = [
     "PyPDF2==2.10.3",
     "pillow==11.1.0",
     "torch==2.5.1",
+    "streamlit==1.43.2",
 ]
 
 
