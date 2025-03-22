@@ -1,4 +1,14 @@
+import os
 import streamlit as st
+
+# Ensure that HF_TOKEN is loaded from the secrets file into the environment, whether in .env or streamlit config.
+if "HF_TOKEN" not in os.environ:
+    try:
+        os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
+    except Exception as e:
+        st.error("HF_TOKEN not found in secrets. Please set HF_TOKEN in .streamlit/secrets.toml.")
+        raise e
+
 from multimodal.src.api_call import ApiCalls
 
 # Initialize the API calls module (this will also load the environment variables via LLMClient)
