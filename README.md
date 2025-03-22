@@ -43,7 +43,7 @@ Then all that was needed was to build the *InferenceClient()* with the user toke
 
 ### Option 1: on your personal hardware
 
-First, get a remote machine to run your code. This could be a VPS with lunix installed for example. Then, connect to it through ssh and setup your github ssh keys. Make sure you have python and pip installed: \
+First, get a remote machine to run your code. This could be a VPS with lunix installed for example. Then, connect to it through ssh and setup your github ssh keys. Make sure you have python and pip installed:
 > sudo apt update \
 > sudo apt install python3 python3-pip python3-venv \
 Now you can follow the **Get Started** tutorial. Once you have executed the streamlit command, copy the 'Network URL' and try out your streamlit app from your local network!
@@ -57,7 +57,7 @@ Advanced steps would include getting a domain name and having streamlit deploy t
 When your app is running, click the **Deploy** button and follow the instructions to connect your streamlit account to your github account. 
 1. Choose the repo where this code is (after having forked this repo).
 2. change the file path to "multimodal/app.py"
-3. Click on advanced settings, select python version 3.10, and paste the following secret (because your .env isn't on your repo): \
-> HF_TOKEN = "your_actual_huggingface_token_here" \
+3. Click on advanced settings, select python version 3.10, and paste the following secret (because your .env isn't on your repo):
+> HF_TOKEN = "your_actual_huggingface_token_here"
 
 Click deploy, and magic! your app gets set-up and opens on your browser.
