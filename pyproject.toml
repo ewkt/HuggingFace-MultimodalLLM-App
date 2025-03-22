@@ -1,16 +1,12 @@
 [project]
 name = "multimodal"
 version = "0.0.1"
-
-description = "School project, building a streamlit app to interract with various HF llms"
-
+description = "School project, building a streamlit app to interact with various HF llms"
 authors = [
   { name = "ewkt" },
 ]
-
 readme = "README.md"
 requires-python = "~=3.10"
-
 dependencies = [
     "pip==25.0",
     "python-dotenv",
@@ -25,7 +21,6 @@ dependencies = [
     "streamlit==1.43.2",
     "torch==2.6.0",
 ]
-
 classifiers = [
     "Programming Language :: Python :: 3",
 ]
@@ -38,5 +33,5 @@ test = [
 ]
 
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["setuptools>=62.0", "wheel"]
+build-backend = "setuptools.build_meta:__editable__"
