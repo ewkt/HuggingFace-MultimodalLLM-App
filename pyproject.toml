@@ -2,7 +2,7 @@
 name = "multimodal"
 version = "0.0.1"
 
-description = "School project"
+description = "School project, building a streamlit app to interact with various HF llms"
 
 authors = [
   { name = "ewkt" },
@@ -25,7 +25,6 @@ dependencies = [
     "torch==2.5.1",
     "streamlit==1.43.2",
 ]
-
 
 classifiers = [
     "Programming Language :: Python :: 3",
