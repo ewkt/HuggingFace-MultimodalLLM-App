@@ -17,6 +17,10 @@ Then all that was needed was to build the *InferenceClient()* with the user toke
 
 ## Get Started
 
+1. clone the code
+> git clone git@github.com:ewkt/llm_hf_api.git \
+> cd llm_hf_api
+
 1. create a venv to install requirments into
 > python -m venv venv \
 > venv\Scripts\activate \
@@ -29,5 +33,22 @@ Then all that was needed was to build the *InferenceClient()* with the user toke
 
 > python -m multimodal.src.api_call \
 > python -m multimodal.src.local_blip
+
+4. you can also run the streamlit app and see the results in your browser on localhost:
+
+> streamlit run multimodal\app.py
 --------
 
+## How to deploy streamlit app?
+
+- Option 1: on your personal hardware
+
+First, get a remote machine to run your code. This could be a VPS with lunix installed for example. Then, connect to it through ssh and setup your github ssh keys. Now you can follow the **Get Started** tutorial. Once you have executed the streamlit command, copy the 'Network URL' and try out your streamlit app from your local network!
+
+And voilà! you have yourself an easy multimodal llm api interface!
+
+Advanced steps would include getting a domain name and having streamlit deploy to that url
+
+- Option 2: using streamlit community cloud
+
+When your app is running, click the **Deploy** button and follow the instructions to connect your streamlit account to your github account, and you will be able to host your app with streamlit!
