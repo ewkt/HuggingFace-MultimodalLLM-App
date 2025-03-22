@@ -1,5 +1,5 @@
 [project]
-name = "multimodal HF llm api streamlit app"
+name = "multimodal_HF_llm_api_streamlit_app"
 version = "0.0.1"
 
 description = "School project!"
@@ -22,7 +22,6 @@ dependencies = [
     "faiss-cpu==1.9.0",
     "PyPDF2==2.10.3",
     "pillow==11.1.0",
-    "torch==2.5.1",
     "streamlit==1.43.2",
 ]
 
